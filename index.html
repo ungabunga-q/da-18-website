@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 18 | Share Transmission: The Procedures</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-dark: #101010;
+            --bg-card: #1c1c1c;
+            --border-color: #383838;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --brand-red: #E50914;
+        }
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-secondary);
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .hero-gradient {
+            background: linear-gradient(to top, var(--bg-dark) 5%, transparent 50%), 
+                        linear-gradient(to right, #1e3a8a30, #e5091430),
+                        radial-gradient(ellipse at center, rgba(30,58,138,0.15) 0%, rgba(18,18,18,0) 70%);
+        }
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+        .section-title::before {
+            content: ''; display: block; width: 4px; height: 1.75rem;
+            background-color: var(--brand-red); margin-right: 0.75rem;
+        }
+        .btn-primary {
+            background-color: var(--brand-red); color: white; font-weight: 600; padding: 0.75rem 2rem;
+            border-radius: 0.25rem; transition: background-color 0.2s ease;
+        }
+        .btn-primary:hover { background-color: #f6121d; }
+
+        .quiz-option {
+            background-color: #2a2a2a; border: 2px solid var(--border-color); transition: all 0.2s ease-in-out;
+        }
+        .quiz-option:hover { background-color: #3a3a3a; border-color: #777; }
+        .quiz-option.selected {
+            border-color: var(--brand-red); background-color: rgba(229, 9, 20, 0.2);
+            font-weight: 600; color: var(--text-primary);
+        }
+        .quiz-option.correct { border-color: #22c55e; background-color: rgba(34, 197, 94, 0.2); }
+        .quiz-option.incorrect { border-color: var(--brand-red); background-color: rgba(229, 9, 20, 0.2); }
+
+        /* New Scenario Card Styles */
+        .scenario-card-v2 {
+            background-color: var(--bg-card);
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .scenario-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .scenario-header .icon-wrapper {
+            padding: 1rem;
+            border-radius: 50%;
+            display: inline-flex;
+            margin-bottom: 1rem;
+        }
+        .step {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .step-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-black/60 backdrop-blur-lg sticky top-0 z-50 border-b border-border-color">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold uppercase tracking-wider text-brand-red">Share Transmission Guide</h1>
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-sm">
+                <a href="#concepts" class="nav-link">Concepts</a>
+                <a href="#case-study" class="nav-link">Case Study</a>
+                <a href="#scenarios" class="nav-link">Scenarios</a>
+                <a href="#quiz" class="nav-link">Quiz</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient pt-16 pb-24 md:pt-24 md:pb-32 text-center">
+            <div class="container mx-auto px-6">
+                <p class="font-semibold text-brand-red">A Course by Dilip Lone, Housing Society Management Coach</p>
+                <h2 class="text-4xl md:text-6xl font-heading tracking-tight mt-2">Death Case Procedures</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-text-secondary">The complete procedural guide for handling share transfers after a member's death.</p>
+            </div>
+        </section>
+
+        <div class="container mx-auto px-6 py-12 space-y-24">
+
+            <!-- Key Concepts -->
+            <section id="concepts">
+                <h3 class="text-3xl font-heading mb-8 flex items-center section-title">Key Concepts</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-bg-card p-6 rounded-lg border border-border-color">
+                        <h4 class="font-heading text-xl mb-2">Provisional vs. Primary Membership</h4>
+                        <p><strong class="text-white">Provisional:</strong> A temporary "trustee" status for nominees/heirs. Can occupy the flat but cannot sell or rent it.</p>
+                        <p class="mt-2"><strong class="text-white">Primary:</strong> Full "ownership" status, allowing sale/rent. Requires court documents (e.g., Succession Certificate).</p>
+                    </div>
+                    <div class="bg-bg-card p-6 rounded-lg border border-border-color">
+                        <h4 class="font-heading text-xl mb-2">Nominee vs. Legal Heir</h4>
+                        <p><strong class="text-white">Nominee:</strong> A person appointed by the member. Acts as a custodian or trustee for the legal heirs.</p>
+                        <p class="mt-2"><strong class="text-white">Legal Heir:</strong> The person(s) legally entitled to the property by law. Only a court can determine legal heirship.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case Study -->
+            <section id="case-study">
+                <h3 class="text-3xl font-heading mb-8 flex items-center section-title">Case Study: The Day Family</h3>
+                <div class="bg-bg-card p-8 rounded-lg border border-border-color grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center md:text-left"><p class="text-sm text-text-secondary">Deceased Member</p><p class="text-xl text-text-primary font-semibold">Mr. Jayanta Day (JD)</p></div>
+                    <div class="text-center md:text-left"><p class="text-sm text-text-secondary">Property</p><p class="text-xl text-text-primary font-semibold">Flat 301, Om Sai Plaza</p></div>
+                    <div class="text-center md:text-left"><p class="text-sm text-text-secondary">Share Certificate</p><p class="text-xl text-text-primary font-semibold">No. 10 (Nos. 141-150)</p></div>
+                    <div class="text-center md:text-left"><p class="text-sm text-text-secondary">Nominees</p><p class="text-xl text-text-primary font-semibold">Sushila (Wife), Yash (Son), Preeti (Daughter)</p></div>
+                </div>
+            </section>
+
+            <!-- Main Scenarios Grid -->
+            <section id="scenarios">
+                <h3 class="text-3xl font-heading mb-8 flex items-center section-title">The Two Scenarios Explained</h3>
+                <div class="grid lg:grid-cols-2 gap-8 items-start">
+                    
+                    <!-- Scenario 1: With Nomination -->
+                    <div class="scenario-card-v2">
+                        <div class="scenario-header">
+                            <div class="icon-wrapper bg-green-900/50">
+                                <i data-lucide="file-check-2" class="h-10 w-10 text-green-400"></i>
+                            </div>
+                            <h4 class="text-2xl font-heading">Scenario 1: With Nomination</h4>
+                            <p class="text-lg text-green-400 font-medium">The Simple Path</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="step">
+                                <div class="step-icon bg-green-900 text-green-300">1</div>
+                                <div>
+                                    <h5 class="font-semibold text-white">What it Means</h5>
+                                    <p class="text-sm">The member left clear written instructions (a nomination form) naming their chosen heir(s). The society knows exactly who to contact. 🤝</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon bg-green-900 text-green-300">2</div>
+                                <div>
+                                    <h5 class="font-semibold text-white">Key Documents 📝</h5>
+                                    <ul class="text-sm mt-1 list-disc list-outside ml-4 text-text-secondary">
+                                        <li>Death Certificate & Original Nomination Form.</li>
+                                        <li>Important Forms: Appendix 15, Appendix 18 (Bond), Joint Affidavit, Appendix 4 (if needed).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon bg-green-900 text-green-300">3</div>
+                                <div>
+                                    <h5 class="font-semibold text-white">The Outcome 🔑</h5>
+                                    <p class="text-sm">The nominee becomes a <strong class="text-white">"Provisional Member"</strong>. This is a temporary caretaker role. They can live in the flat, but cannot sell or rent it.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scenario 2: Without Nomination -->
+                    <div class="scenario-card-v2">
+                        <div class="scenario-header">
+                            <div class="icon-wrapper bg-orange-900/50">
+                                <i data-lucide="file-question" class="h-10 w-10 text-orange-400"></i>
+                            </div>
+                            <h4 class="text-2xl font-heading">Scenario 2: Without Nomination</h4>
+                            <p class="text-lg text-orange-400 font-medium">The Careful Path</p>
+                        </div>
+                        <div class="space-y-6">
+                           <div class="step">
+                                <div class="step-icon bg-orange-900 text-orange-300">1</div>
+                                <div>
+                                    <h5 class="font-semibold text-white">What it Means</h5>
+                                    <p class="text-sm">No instructions were left. The society doesn't know who the legal heir is and must be very careful to avoid giving the flat to the wrong person. 🧐</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon bg-orange-900 text-orange-300">2</div>
+                                <div>
+                                    <h5 class="font-semibold text-white">Society's Mandatory Action 📢</h5>
+                                    <p class="text-sm">The society <strong class="text-white">MUST</strong> publish a **Public Notice (Appendix 16)** in two newspapers. This is a public call for the real heirs to come forward.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-icon bg-orange-900 text-orange-300">3</div>
+                                <div>
+                                    <h5 class="font-semibold text-white">Key Documents 📝</h5>
+                                    <ul class="text-sm mt-1 list-disc list-outside ml-4 text-text-secondary">
+                                        <li>The Public Notice (Appendix 16) & Proof of Publication (newspaper clippings).</li>
+                                        <li>Heir's Application (Appendix 17).</li>
+                                        <li>💰 Fees: ₹100 Entrance + ₹500 Transfer Fee.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Process Outcome -->
+            <section id="outcome">
+                 <h3 class="text-3xl font-heading mb-8 flex items-center section-title">Final Outcome & Endorsement</h3>
+                <div class="bg-bg-card border border-border-color p-8 rounded-lg flex flex-col md:flex-row items-center gap-8">
+                     <i data-lucide="stamp" class="w-24 h-24 text-brand-red flex-shrink-0"></i>
+                    <div>
+                         <h4 class="text-2xl font-heading">The "Provisional Member" Stamp</h4>
+                        <p class="mt-2 text-text-secondary leading-relaxed">This is the most critical step in both scenarios. The new member's name MUST be endorsed on the share certificate and all society records with the words <strong class="text-white bg-brand-red/80 px-2 py-1 rounded">"Provisional Member"</strong>. This legally clarifies their temporary status and inability to sell or rent the property without a court order proving full heirship.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Interactive Quiz -->
+            <section id="quiz">
+                 <h3 class="text-3xl font-heading mb-8 flex items-center section-title">Knowledge Check</h3>
+                <div class="bg-bg-card border border-border-color p-8 md:p-10 rounded-lg">
+                    <div id="quiz-container"></div>
+                    <div id="quiz-result" class="hidden mt-6 text-center text-xl font-semibold"></div>
+                    <div class="mt-8 flex justify-center"><button id="submit-quiz" class="btn-primary">Check Answers</button><button id="reset-quiz" class="hidden bg-gray-600 text-white font-bold py-3 px-8 rounded hover:bg-gray-700">Try Again</button></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border-color mt-16 py-8">
+        <div class="container mx-auto text-center text-sm text-text-secondary">
+            <p>&copy; 2024 Housing Society Management Course by Dilip Lone.</p>
+        </div>
+    </footer>
+    
+    <script>
+        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizData = [
+                { question: "Is a Transfer Premium payable in a death case with nomination?", options: ["Yes, always", "No, it is not applicable", "Yes, but only 50%", "Only if there are multiple nominees"], answer: "No, it is not applicable" },
+                { question: "What is the official legal status of a member who gains membership via nomination?", options: ["Full Owner", "Associate Member", "Provisional Member", "Co-Member"], answer: "Provisional Member" },
+                { question: "Which form is the mandatory public notice when a member dies WITHOUT a nomination?", options: ["Appendix 15", "Appendix 4", "Appendix 18", "Appendix 16"], answer: "Appendix 16" },
+                { question: "Can a Provisional Member legally sell or rent out the flat?", options: ["Yes, immediately", "Yes, with committee permission", "No, not until legal heirship is proven in court", "Only if they are the sole nominee"], answer: "No, not until legal heirship is proven in court" }
+            ];
+            const quizContainer = document.getElementById('quiz-container'), submitButton = document.getElementById('submit-quiz'), resetButton = document.getElementById('reset-quiz'), resultContainer = document.getElementById('quiz-result');
+            function loadQuiz() {
+                quizContainer.innerHTML = ''; resultContainer.innerHTML = ''; resultContainer.classList.add('hidden'); submitButton.classList.remove('hidden'); resetButton.classList.add('hidden');
+                quizData.forEach((item, index) => {
+                    const questionEl = document.createElement('div'); questionEl.classList.add('mb-8');
+                    questionEl.innerHTML = `<p class="font-heading text-lg text-text-primary mb-4 text-center">${index + 1}. ${item.question}</p>`;
+                    const optionsEl = document.createElement('div'); optionsEl.classList.add('grid', 'sm:grid-cols-2', 'gap-3', 'max-w-2xl', 'mx-auto');
+                    item.options.forEach(option => {
+                        const optionEl = document.createElement('div'); optionEl.classList.add('p-4', 'rounded', 'cursor-pointer', 'quiz-option', 'text-center', 'font-medium', 'text-text-secondary');
+                        optionEl.textContent = option; optionEl.dataset.question = index;
+                        optionEl.addEventListener('click', () => { document.querySelectorAll(`.quiz-option[data-question="${index}"]`).forEach(el => el.classList.remove('selected')); optionEl.classList.add('selected'); });
+                        optionsEl.appendChild(optionEl);
+                    });
+                    questionEl.appendChild(optionsEl); quizContainer.appendChild(questionEl);
+                });
+            }
+            submitButton.addEventListener('click', () => {
+                let score = 0, answeredAll = true;
+                quizData.forEach((item, index) => { if(!document.querySelector(`.quiz-option[data-question="${index}"].selected`)) answeredAll = false; });
+                if(!answeredAll) {
+                    const notification = document.createElement('div'); notification.textContent = 'Please answer all questions before submitting.';
+                    notification.style.cssText = 'position:fixed; top:80px; left:50%; transform:translateX(-50%); background-color: var(--brand-red); color:white; padding:10px 20px; border-radius:4px; z-index:100; font-family: "Inter", sans-serif;';
+                    document.body.appendChild(notification); setTimeout(() => notification.remove(), 3000); return;
+                }
+                quizData.forEach((item, index) => {
+                    const selectedOption = document.querySelector(`.quiz-option[data-question="${index}"].selected`);
+                    document.querySelectorAll(`.quiz-option[data-question="${index}"]`).forEach(el => el.style.pointerEvents = 'none');
+                    if (selectedOption.textContent === item.answer) { score++; selectedOption.classList.remove('selected'); selectedOption.classList.add('correct'); } 
+                    else { selectedOption.classList.remove('selected'); selectedOption.classList.add('incorrect'); const correctOption = Array.from(document.querySelectorAll(`.quiz-option[data-question="${index}"]`)).find(opt => opt.textContent === item.answer); if(correctOption) correctOption.classList.add('correct'); }
+                });
+                resultContainer.innerHTML = `You scored <span class="text-brand-red">${score}</span> out of <span class="text-brand-red">${quizData.length}</span>!`;
+                resultContainer.classList.remove('hidden'); submitButton.classList.add('hidden'); resetButton.classList.remove('hidden');
+            });
+            resetButton.addEventListener('click', loadQuiz); loadQuiz();
+        });
+    </script>
+</body>
+</html>
